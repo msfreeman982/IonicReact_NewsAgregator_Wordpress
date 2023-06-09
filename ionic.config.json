@@ -1,0 +1,7 @@
+{
+  "name": "news-agregator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
