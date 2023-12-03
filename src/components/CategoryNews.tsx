@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react'
-import { getNewsByPage } from '../services/getNewsByPage'
-import { getNewsList } from '../services/getNews'
+import { getNewsByCategoryPage } from '../services/getNewsByCategoryPage'
+import { getNewsByCategory } from '../services/getNewsByCategory'
 import ImageContainer from './ImageContainer'
 import React from 'react'
 import { IonSpinner } from '@ionic/react'
 import { IonIcon, IonLabel, IonTabButton } from '@ionic/react'
 import { arrowForward, arrowBack } from 'ionicons/icons'
 
-import './ExploreContainer.css'
+import './CategoryNews.css'
 
-interface ContainerProps {
-    name: string
+interface CategoryNewsProps {
+    id: number
 }
 
-const ExploreContainer: React.FC<ContainerProps> = () => {
+const CategoryNews: React.FC<CategoryNewsProps> = ({ id }) => {
     const [news, setNews] = useState<any>()
     const [page, setPage] = useState<number>(1)
     const [isLoading, setIsLoading] = useState<any>(true)
@@ -21,7 +21,7 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     const showNext = () => {
         const pageNext = +page + 1
         setPage(pageNext)
-        getNewsByPage(pageNext).then((response: any) => {
+        getNewsByCategoryPage(id, pageNext).then((response: any) => {
             setNews(response)
             setIsLoading(false)
         })
@@ -31,14 +31,14 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
         const pagePrev = +page - 1
         if (pagePrev < 0) return
         setPage(pagePrev)
-        getNewsByPage(pagePrev).then((response: any) => {
+        getNewsByCategoryPage(id, pagePrev).then((response: any) => {
             setNews(response)
             setIsLoading(false)
         })
     }
 
     useEffect(() => {
-        getNewsList().then((response: any) => {
+        getNewsByCategory(id).then((response: any) => {
             setNews(response)
             setIsLoading(false)
         })
@@ -87,4 +87,4 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
     )
 }
 
-export default React.memo(ExploreContainer)
+export default React.memo(CategoryNews)
