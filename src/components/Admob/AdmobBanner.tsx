@@ -17,11 +17,11 @@ const AdmobBanner = () => {
     })
 
     const options: BannerAdOptions = {
-        adId: 'YOUR ADID',
+        adId: import.meta.env.VITE_APP_ADMOB_ID,
         adSize: BannerAdSize.BANNER,
         position: BannerAdPosition.BOTTOM_CENTER,
         margin: 0,
-        isTesting: true,
+        // isTesting: true,
         // npa: true
     }
     return AdMob.showBanner(options)
