@@ -3,7 +3,7 @@ import React from 'react'
 import logoImage from '../theme/logo.jpg'
 import ShowNews from '../components/ShowNews'
 import { useParams } from 'react-router'
-
+// import AdmobBanner from '../components/Admob/AdmobBanner'
 import './News.css'
 
 const News: React.FC = () => {
@@ -26,6 +26,7 @@ const News: React.FC = () => {
                         <IonTitle size="large">News</IonTitle>
                     </IonToolbar>
                 </IonHeader>
+                {/* <AdmobBanner /> */}
                 <ShowNews id={useCurrentPath()} />
             </IonContent>
         </IonPage>

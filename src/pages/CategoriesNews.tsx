@@ -9,7 +9,6 @@ import './CategoriesNews.css'
 const CategoriesNews: React.FC = () => {
     const useCurrentPath = () => {
         const { id }: any = useParams()
-        console.log(id)
         return id
     }
 
